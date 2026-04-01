@@ -4,97 +4,130 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>S.O.S Patinhas</title>
+
   <style>
     body {
-      font-family: 'Times New Roman', Times, serif, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 0 20px;
-      background-color: #f2e3c6;
-      color: #000000;
+      background-color: #f9fafb;
+      color: #333;
     }
-    header, section {
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
       margin-bottom: 40px;
     }
+
     h1, h2, h3 {
       color: #7f1e47;
     }
-    ul {
-      padding-left: 20px;
-    }
+
     .section {
-      border-bottom: 1px solid #c1c5c7;
+      margin-bottom: 40px;
       padding-bottom: 30px;
+      border-bottom: 1px solid #ddd;
     }
-  header h1 {
-  text-align: center;
-}
 
-footer p {
-  text-align: center;
-  margin-left: 0;
-}
-.animal-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
+    /* CARDS */
+    .animal-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
 
-.animal-card {
-  border: 1px solid #aaa;
-  border-radius: 10px;
-  padding: 15px;
-  background-color: #f0f0d8;
-  width: 220px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-}
-.animal-card img {
-  width: 100%;
-  border-radius: 8px;
-  margin-top: 10px;
-}
-form {
-  width: 100%;
-}
-@media (max-width: 600px) {
-  .animal-container {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-button[type="submit"] {
-  background-color: #b83564;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-}
-button[type="submit"]:hover {
-  background-color: #4f8699;
-}
-.frase {
-  color: #7f1e47;
-  cursor: pointer;
-  text-decoration: underline;
-}
+    .animal-card {
+      border-radius: 12px;
+      padding: 15px;
+      background-color: white;
+      width: 220px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+      text-align: center;
+    }
 
+    .animal-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .animal-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    /* BOTÕES */
+    button {
+      background-color: #b83564;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #92294f;
+    }
+
+    /* FORM */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 600px;
+    }
+
+    input, textarea, select {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .frase {
+      color: #7f1e47;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 600px) {
+      .animal-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Lar Amigo 🐾</h1>
-    <p>Organização dedicada ao resgate e cuidado de cães e gatos em Brasília-DF.</p>
-  </header>
+<div class="container">
 
-  <section class="section">
-    <h2>Missão</h2>
-    <p>
-      O Lar Amigo tem como missão resgatar, proteger e reabilitar cães e gatos em situação de risco, promovendo a adoção responsável e incentivando o respeito e cuidado com os animais.
-    </p>
-  </section>
+<header>
+  <h1>Lar Amigo 🐾</h1>
+  <p>Organização dedicada ao resgate e cuidado de cães e gatos em Brasília-DF.</p>
+</header>
+
+<section class="section">
+  <h2>Missão</h2>
+  <p>
+    O Lar Amigo tem como missão resgatar, proteger e reabilitar cães e gatos em situação de risco, promovendo a adoção responsável.
+  </p>
+</section>
 
 <section class="section">
   <h2>Animais para Adoção</h2>
@@ -103,238 +136,85 @@ button[type="submit"]:hover {
 
     <div class="animal-card">
       <h3>Mel</h3>
-      <p><strong>Idade:</strong> 2 anos e meio</p>
-      <p><strong>Raça:</strong> Shih Tzu</p>
-      <img src="https://www.rivaincorporadora.com.br/wp-content/uploads/2024/02/Lhasa-Apso.jpg" alt="Mel, Shih Tzu">
+      <p>2 anos • Shih Tzu</p>
+      <img src="https://www.rivaincorporadora.com.br/wp-content/uploads/2024/02/Lhasa-Apso.jpg">
+      <button onclick="abrirAdocao('Mel')">Quero adotar</button>
     </div>
 
     <div class="animal-card">
       <h3>Fred</h3>
-      <p><strong>Idade:</strong> 1 ano e meio</p>
-      <p><strong>Raça:</strong> Sem Raça Definida</p>
-      <img src="https://classic.exame.com/wp-content/uploads/2023/02/GettyImages-149516025-1.jpg" alt="Fred, SRD">
+      <p>1 ano • SRD</p>
+      <img src="https://classic.exame.com/wp-content/uploads/2023/02/GettyImages-149516025-1.jpg">
+      <button onclick="abrirAdocao('Fred')">Quero adotar</button>
     </div>
 
     <div class="animal-card">
       <h3>Salém</h3>
-      <p><strong>Idade:</strong> 3 anos</p>
-      <p><strong>Raça:</strong> Sem Raça Definida</p>
-      <img src="https://www.patasdacasa.com.br/sites/default/files/2024-10/GettyImages-1443769180.jpg" alt="Salém, Gato Siamês">
+      <p>3 anos • Gato</p>
+      <img src="https://www.patasdacasa.com.br/sites/default/files/2024-10/GettyImages-1443769180.jpg">
+      <button onclick="abrirAdocao('Salém')">Quero adotar</button>
     </div>
 
     <div class="animal-card">
       <h3>Penélope</h3>
-      <p><strong>Idade:</strong> 1 ano</p>
-      <p><strong>Raça:</strong> Birmanês</p>
-      <img src="https://jpimg.com.br/uploads/2024/02/4-caracteristicas-do-gato-da-raca-birmanes.jpg" alt="Penélope, Birmanês">
-    </div>
-
-    <div class="animal-card">
-      <h3>Sebastian</h3>
-      <p><strong>Idade:</strong> 8 meses</p>
-      <p><strong>Raça:</strong> Dachshund</p>
-      <img src="https://sampi.net.br/dir-arquivo-imagem/2025/03/6ddfb5ea611b0bc8da3eaa24e866fa4d.jpg" alt="Sebastian, Dachshund">
+      <p>1 ano • Birmanês</p>
+      <img src="https://jpimg.com.br/uploads/2024/02/4-caracteristicas-do-gato-da-raca-birmanes.jpg">
+      <button onclick="abrirAdocao('Penélope')">Quero adotar</button>
     </div>
 
   </div>
 </section>
 
-
-  <section class="section">
-    <h2>Principais Ações Voluntárias</h2>
-    <ul>
-      <li>Resgate e acolhimento de animais;</li>
-      <li>Promoção da adoção responsável;</li>
-      <li>Atendimento veterinário solidário;</li>
-      <li>Campanhas de castração;</li>
-      <li>Educação e conscientização;</li>
-      <li>Lares temporários.</li>
-    </ul>
-  </section>
-  
-    <h3>🎁 Apadrinhamento</h3>
-    <p>Contribua mensalmente com um animal específico e receba atualizações e fotos.</p>
-  </section>
-
-  <section class="section">
-    <h2>Como Ajudar</h2>
-
-    <h3>💰 Doações</h3>
-    <p>Você pode doar valores ou itens físicos como ração e medicamentos.</p>
-    <ul>
-      <li><strong>Chave Pix:</strong> lar.amigo@ong.org</li>
-      <li>Rações, cobertores, produtos de limpeza, etc.</li>
-    </ul>
-
-    <h3>🙋🏻‍♀️ Voluntariado</h3>
-    <p>Participe ativamente como voluntário em:</p>
-    <ul>
-      <li>Resgates e feiras de adoção;</li>
-      <li>Apoio em abrigos e lares temporários;</li>
-      <li>Redes sociais e campanhas online.</li>
-    </ul>
-
 <section class="section">
-  <h2><span class="frase" onclick="toggleFormulario('formColaborar')">Deseja colaborar conosco? Clique aqui para preencher o formulário</span></h2>
-<div id="formColaborar" style="display: none;">
-  <form action="#" method="post" style="display: flex; flex-direction: column; gap: 15px; max-width: 600px;">
-    <h3>Seus dados</h3>
-    <label>Nome completo:
-      <input type="text" name="nome_colaborador" required>
-    </label>
+  <h2><span class="frase" onclick="toggleFormulario('formAdotar')">Formulário de adoção</span></h2>
 
-    <label>E-mail:
-      <input type="email" name="email_colaborador" required>
-    </label>
+  <div id="formAdotar" style="display:none;">
+    <form onsubmit="enviarFormulario(event)">
+      
+      <label>Nome:
+        <input type="text" required>
+      </label>
 
-    <label>Telefone:
-      <input type="tel" name="telefone_colaborador">
-    </label>
+      <label>Email:
+        <input type="email" required>
+      </label>
 
-    <h3>Como você deseja colaborar?</h3>
+      <label>Qual pet deseja?
+        <select id="petSelecionado">
+          <option>Mel</option>
+          <option>Fred</option>
+          <option>Salém</option>
+          <option>Penélope</option>
+        </select>
+      </label>
 
-    <label><input type="checkbox" name="colaboracao" value="Doações"> Fazer Doações</label>
-    <label><input type="checkbox" name="colaboracao" value="Voluntariado"> Ser Voluntário</label>
-    <label><input type="checkbox" name="colaboracao" value="Apadrinhamento"> Apadrinhar um Animal</label>
-    <label><input type="checkbox" name="colaboracao" value="Divulgação"> Ajudar na Divulgação</label>
+      <button type="submit">Enviar</button>
 
-    <label>Mensagem ou observações adicionais:
-      <textarea name="mensagem_colaborador" placeholder="Conte como você gostaria de ajudar..."></textarea>
-    </label>
-
-    <button type="submit">Enviar Colaboração</button>
-  </form>
-  </form>
-</div>
-</section>
-
-  <section class="section">
-    <h2><span class="frase" onclick="toggleFormulario('formAdotar')">Gostou de algum bichinho? Clique aqui para preencher o formulário de adoção</span></h2>
-<div id="formAdotar" style="display: none;">
-  <form action="#" method="post" style="display: flex; flex-direction: column; gap: 15px; max-width: 600px;">
-   
-
-  <form action="#" method="post" style="display: flex; flex-direction: column; gap: 15px; max-width: 600px;">
-
-    <h3>Dados Pessoais</h3>
-    <label>Nome completo:
-      <input type="text" name="nome" required>
-    </label>
-
-    <label>Idade:
-      <input type="number" name="idade" required>
-    </label>
-
-    <label>Endereço completo (com CEP):
-      <input type="text" name="endereco" required>
-    </label>
-
-    <label>Telefone (WhatsApp):
-      <input type="tel" name="telefone" required>
-    </label>
-
-    <label>E-mail:
-      <input type="email" name="email" required>
-    </label>
-
-    <label>Profissão:
-      <input type="text" name="profissao">
-    </label>
-
-    <label>Perfil nas redes sociais (opcional):
-      <input type="text" name="redes">
-    </label>
-
-    <h3>Informações sobre a residência</h3>
-
-    <label>Tipo de moradia:</label>
-    <label><input type="radio" name="moradia" value="Casa"> Casa</label>
-    <label><input type="radio" name="moradia" value="Apartamento"> Apartamento</label>
-    <label><input type="radio" name="moradia" value="Chácara/Sítio"> Chácara/Sítio</label>
-    <label><input type="radio" name="moradia" value="Outro"> Outro</label>
-
-    <label>Residência é:
-      <label><input type="radio" name="residencia" value="Própria"> Própria</label>
-      <label><input type="radio" name="residencia" value="Alugada"> Alugada</label>
-    </label>
-
-    <label>Caso alugada, o proprietário permite animais?
-      <label><input type="radio" name="permite_animais" value="Sim"> Sim</label>
-      <label><input type="radio" name="permite_animais" value="Não"> Não</label>
-    </label>
-
-    <label>Há telas de proteção nas janelas/sacadas?
-      <label><input type="radio" name="telas_protecao" value="Sim"> Sim</label>
-      <label><input type="radio" name="telas_protecao" value="Não"> Não</label>
-      <label><input type="radio" name="telas_protecao" value="Não se aplica"> Não se aplica</label>
-    </label>
-
-    <label>Possui quintal?
-      <label><input type="radio" name="quintal" value="Sim"> Sim</label>
-      <label><input type="radio" name="quintal" value="Não"> Não</label>
-    </label>
-
-    <label>Outros animais na casa? Se sim, quais e quantos?
-      <textarea name="outros_animais"></textarea>
-    </label>
-
-    <h3>Informações sobre a adoção</h3>
-
-    <label>Qual pet deseja adotar?</label>
-<select name="pet_desejado" required>
-  <option value="Mel (Shih Tzu)">Mel (Shih Tzu)</option>
-<option value="Fred (SRD)">Fred (SRD)</option>
-<option value="Salém (SRD - Gato)">Salém (SRD - Gato)</option>
-<option value="Penélope (Birmanês)">Penélope (Birmanês)</option>
-<option value="Sebastian (Dachshund)">Sebastian (Dachshund)</option>
-
-</select>
-
-
-    <label>Por que deseja adotar este animal?
-     <textarea name="motivo_adocao" required placeholder="Explique sua motivação..."></textarea>
-
-    </label>
-
-    <label>O animal ficará sozinho por quanto tempo por dia?
-      <input type="text" name="tempo_sozinho">
-    </label>
-
-    <label>Onde o animal dormirá?
-      <input type="text" name="dormira">
-    </label>
-
-    <label>Tem condições de arcar com gastos como ração, vacinas, etc?
-      <label><input type="radio" name="custos" value="Sim"> Sim</label>
-      <label><input type="radio" name="custos" value="Não"> Não</label>
-    </label>
-
-    <label>Em caso de viagem ou mudança, o que pretende fazer com o animal?
-      <textarea name="viagem"></textarea>
-    </label>
-
-    <label>Está ciente da responsabilidade de cuidar do animal por toda a vida dele?
-      <label><input type="radio" name="responsabilidade" value="Sim"> Sim</label>
-      <label><input type="radio" name="responsabilidade" value="Não"> Não</label>
-    </label>
-
-    <label>Já teve outros animais? O que aconteceu com eles?
-      <textarea name="hist_animal"></textarea>
-    </label>
-
-    <button type="submit">Enviar Formulário</button>
-    
-  </form>
     </form>
-</div>
+  </div>
 </section>
-  <footer>
-    <p><strong>Junte-se ao Lar Amigo e transforme vidas!🐶🐱💛</strong></p>
-  </footer>
+
+<footer>
+  <p><strong>Transforme uma vida hoje 🐶💛</strong></p>
+</footer>
+
+</div>
+
 <script>
   function toggleFormulario(id) {
-    const form = document.getElementById(id);
-    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === "none" ? "block" : "none";
+  }
+
+  function abrirAdocao(nome) {
+    toggleFormulario('formAdotar');
+    document.getElementById('petSelecionado').value = nome;
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  }
+
+  function enviarFormulario(e) {
+    e.preventDefault();
+    alert("Formulário enviado com sucesso! 🐾");
   }
 </script>
 
