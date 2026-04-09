@@ -34,7 +34,6 @@
       border-bottom: 1px solid #ddd;
     }
 
-    /* CARDS */
     .animal-container {
       display: flex;
       flex-wrap: wrap;
@@ -56,13 +55,6 @@
       transform: translateY(-5px);
     }
 
-    .animal-card img {
-      width: 100%;
-      border-radius: 8px;
-      margin-top: 10px;
-    }
-
-    /* BOTÕES */
     button {
       background-color: #b83564;
       color: white;
@@ -71,14 +63,12 @@
       border-radius: 8px;
       cursor: pointer;
       margin-top: 10px;
-      transition: 0.3s;
     }
 
     button:hover {
       background-color: #92294f;
     }
 
-    /* FORM */
     form {
       display: flex;
       flex-direction: column;
@@ -102,14 +92,6 @@
       text-align: center;
       margin-top: 40px;
     }
-
-    /* RESPONSIVO */
-    @media (max-width: 600px) {
-      .animal-container {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
   </style>
 </head>
 
@@ -119,50 +101,15 @@
 
 <header>
   <h1>Lar Amigo 🐾</h1>
-  <p>Organização dedicada ao resgate e cuidado de cães e gatos em Brasília-DF.</p>
+  <p>Organização dedicada ao resgate e cuidado de cães e gatos.</p>
 </header>
-
-<section class="section">
-  <h2>Missão</h2>
-  <p>
-    O Lar Amigo tem como missão resgatar, proteger e reabilitar cães e gatos em situação de risco, promovendo a adoção responsável.
-  </p>
-</section>
 
 <section class="section">
   <h2>Animais para Adoção</h2>
 
-  <div class="animal-container">
+  <!-- AGORA VEM DA API -->
+  <div class="animal-container" id="lista-pets"></div>
 
-    <div class="animal-card">
-      <h3>Mel</h3>
-      <p>2 anos • Shih Tzu</p>
-      <img src="https://www.rivaincorporadora.com.br/wp-content/uploads/2024/02/Lhasa-Apso.jpg">
-      <button onclick="abrirAdocao('Mel')">Quero adotar</button>
-    </div>
-
-    <div class="animal-card">
-      <h3>Fred</h3>
-      <p>1 ano • SRD</p>
-      <img src="https://classic.exame.com/wp-content/uploads/2023/02/GettyImages-149516025-1.jpg">
-      <button onclick="abrirAdocao('Fred')">Quero adotar</button>
-    </div>
-
-    <div class="animal-card">
-      <h3>Salém</h3>
-      <p>3 anos • Gato</p>
-      <img src="https://www.patasdacasa.com.br/sites/default/files/2024-10/GettyImages-1443769180.jpg">
-      <button onclick="abrirAdocao('Salém')">Quero adotar</button>
-    </div>
-
-    <div class="animal-card">
-      <h3>Penélope</h3>
-      <p>1 ano • Birmanês</p>
-      <img src="https://jpimg.com.br/uploads/2024/02/4-caracteristicas-do-gato-da-raca-birmanes.jpg">
-      <button onclick="abrirAdocao('Penélope')">Quero adotar</button>
-    </div>
-
-  </div>
 </section>
 
 <section class="section">
@@ -180,12 +127,7 @@
       </label>
 
       <label>Qual pet deseja?
-        <select id="petSelecionado">
-          <option>Mel</option>
-          <option>Fred</option>
-          <option>Salém</option>
-          <option>Penélope</option>
-        </select>
+        <select id="petSelecionado"></select>
       </label>
 
       <button type="submit">Enviar</button>
@@ -195,7 +137,7 @@
 </section>
 
 <footer>
-  <p><strong>Transforme uma vida hoje 🐶💛</strong></p>
+  <p><strong>Transforme uma vida hoje 🐶</strong></p>
 </footer>
 
 </div>
@@ -216,6 +158,40 @@
     e.preventDefault();
     alert("Formulário enviado com sucesso! 🐾");
   }
+
+  // 🔥 CONSUMINDO A API
+  fetch("http://localhost:3000/pets")
+    .then(response => response.json())
+    .then(data => {
+      const lista = document.getElementById("lista-pets");
+      const select = document.getElementById("petSelecionado");
+
+      lista.innerHTML = "";
+      select.innerHTML = "";
+
+      data.forEach(pet => {
+        // cria card
+        const div = document.createElement("div");
+        div.classList.add("animal-card");
+
+        div.innerHTML = `
+          <h3>${pet.nome}</h3>
+          <p>Idade: ${pet.idade}</p>
+          <p>Porte: ${pet.porte}</p>
+          <p>${pet.descricao}</p>
+          <button onclick="abrirAdocao('${pet.nome}')">Quero adotar</button>
+        `;
+
+        lista.appendChild(div);
+
+        // adiciona no select do formulário
+        const option = document.createElement("option");
+        option.value = pet.nome;
+        option.textContent = pet.nome;
+        select.appendChild(option);
+      });
+    })
+    .catch(error => console.error(error));
 </script>
 
 </body>
