@@ -45,14 +45,21 @@
       border-radius: 12px;
       padding: 15px;
       background-color: white;
-      width: 220px;
+      width: 240px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-      transition: transform 0.2s ease;
       text-align: center;
     }
 
+.animal-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+    
     .animal-card:hover {
       transform: translateY(-5px);
+      transition: 0.3s;
     }
 
     button {
@@ -174,14 +181,20 @@
         const div = document.createElement("div");
         div.classList.add("animal-card");
 
-        div.innerHTML = `
-          <h3>${pet.nome}</h3>
-          <p>Idade: ${pet.idade}</p>
-          <p>Porte: ${pet.porte}</p>
-          <p>${pet.descricao}</p>
-          <img src="${pet.imagem}" />
-          <button onclick="abrirAdocao('${pet.nome}')">Quero adotar</button>
-        `;
+      div.innerHTML = `
+  <img src="${pet.imagem}" alt="${pet.nome}" />
+
+  <h3>${pet.nome}</h3>
+
+  <p><strong>Idade:</strong> ${pet.idade} anos</p>
+  <p><strong>Porte:</strong> ${pet.porte}</p>
+
+  <p>${pet.descricao}</p>
+
+  <button onclick="abrirAdocao('${pet.nome}')">
+    Quero adotar
+  </button>
+`;
 
         lista.appendChild(div);
 
