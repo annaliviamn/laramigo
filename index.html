@@ -193,7 +193,7 @@
     alert("Formulário enviado com sucesso! 🐾");
   }
 
-  fetch("http://localhost:3000/pets")
+  fetch("https://laramigo-api.onrender.com/pets")
     .then(response => response.json())
     .then(data => {
       const lista = document.getElementById("lista-pets");
